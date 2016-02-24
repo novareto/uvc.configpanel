@@ -1,0 +1,7 @@
+<ul>
+  <li tal:repeat="item view.plugins">
+    <a tal:attributes="href '%s/++plugins++%s' % (view.application_url(), item.token)"
+       tal:content="item.value.title"
+       />
+  </li>
+</ul>
