@@ -11,6 +11,14 @@ from .interfaces import IConfigurablePlugin, IPluginConfiguration
 from zope.interface import alsoProvides, Interface
 
 
+def get_config(name):
+    homefolder = uvcsite.getHomeFolder(uvcsite.getRequest())
+    config = homefolder.get('__config__', None)
+    if config:
+        return config.get(name)
+    return 
+
+
 class Configurator(OOBTree):
     pass
 

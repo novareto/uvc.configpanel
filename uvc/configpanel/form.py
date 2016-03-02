@@ -34,10 +34,10 @@ class Configure(uvcsite.Form):
     def save_configuration(self):
         data, errors = self.extractData()
         if errors:
-            self.flash('An error happened')
+            self.flash('Es ist ein Fehler aufgetreten.')
             return FAILURE
 
         item = self.getContent()
         item.update(data)
-        self.flash('Configuration successful')
+        self.flash('Ihre Einstellungen wurden gespeichert.')
         return SUCCESS
