@@ -26,9 +26,6 @@ setup(name='uvc.configpanel',
           # -*- Extra requirements: -*-
       ],
       entry_points={
-         'fanstatic.libraries': [
-            'uvc.configpanel = uvc.configpanel.resources:library',
-            ],
          'z3c.autoinclude.plugin': 'target=uvcsite', 
       }
       )
