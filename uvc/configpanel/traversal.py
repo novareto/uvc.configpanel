@@ -2,13 +2,17 @@
 
 import grok
 import uvcsite
-from zope.component import getUtility
-from zope.traversing.interfaces import ITraversable
-from zope.location import Location, LocationProxy
+import datetime
+
+
 from BTrees.OOBTree import OOBTree
+from zope.interface import Interface
+from zope.component import getUtility
 from persistent.dict import PersistentDict
-from .interfaces import IConfigurablePlugin, IPluginConfiguration
-from zope.interface import alsoProvides, Interface
+from zope.location import Location, LocationProxy
+from zope.traversing.interfaces import ITraversable
+from zope.dublincore.interfaces import IDCDescriptiveProperties
+from .interfaces import IConfigurator, IConfigurablePlugin, IPluginConfiguration
 
 
 def get_config(name):
@@ -16,11 +20,13 @@ def get_config(name):
     config = homefolder.get('__config__', None)
     if config:
         return config.get(name)
-    return 
+    return
 
 
 class Configurator(OOBTree):
-    pass
+    grok.implements(IConfigurator, IDCDescriptiveProperties)
+
+    title = u"Konfiguration"
 
 
 class Configuration(PersistentDict, Location):
