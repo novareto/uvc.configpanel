@@ -24,14 +24,6 @@ class Configuration(PersistentDict, Location):
     grok.implements(IPluginConfiguration)
 
 
-def get_config(name):
-    homefolder = uvcsite.getHomeFolder(uvcsite.getRequest())
-    config = homefolder.get('__config__', None)
-    if config:
-        return config.get(name)
-    return
-
-
 def get_plugin_configuration(homefolder=None, request=None, name=None):
     if homefolder is None:
         if request is None:

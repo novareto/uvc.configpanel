@@ -1,5 +1,5 @@
 import logging
-from .traversal import get_config, Configuration
+from .traversal import get_plugin_configuration, Configuration
 from .interfaces import IConfigurablePlugin, IPluginConfiguration, IConfigurator
 
 
