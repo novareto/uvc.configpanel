@@ -5,7 +5,7 @@ import uvcsite
 
 
 class MyPrefsMenu(uvcsite.MenuItem):
-    grok.title(u'Einstellungen')
+    grok.title(u'Erweiterte Einstellungen')
     grok.require('zope.View')
     grok.viewletmanager(uvcsite.IPersonalMenu)
 
