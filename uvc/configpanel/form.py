@@ -28,9 +28,12 @@ class Configure(uvcsite.Form):
     
     @CachedProperty
     def fields(self):
-        return uvcsite.Fields(*self.factory.getInterfaces())
+        fields = uvcsite.Fields(*self.factory.getInterfaces())
+        if hasattr(self.factory, 'configureFields'):
+            self.factory.configureFields(fields)
+        return fields
 
-    @action(u"Save")
+    @action(u"Speichern")
     def save_configuration(self):
         data, errors = self.extractData()
         if errors:
