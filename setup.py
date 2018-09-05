@@ -22,8 +22,18 @@ setup(name='uvc.configpanel',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
+          'BTrees',
+          'grok',
+          'persistent',
           'setuptools',
-          # -*- Extra requirements: -*-
+          'uvcsite',
+          'zeam.form.base',
+          'zope.cachedescriptors',
+          'zope.component',
+          'zope.dublincore',
+          'zope.interface',
+          'zope.location'
+          'zope.traversing',
       ],
       entry_points={
          'z3c.autoinclude.plugin': 'target=uvcsite', 
