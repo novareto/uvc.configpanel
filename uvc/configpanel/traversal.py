@@ -5,7 +5,7 @@ import uvcsite
 import datetime
 
 from BTrees.OOBTree import OOBTree
-from zope.interface import Interface
+from zope.interface import Interface, implementer
 from zope.component import getUtility
 from persistent.dict import PersistentDict
 from zope.location import Location, LocationProxy
@@ -14,14 +14,14 @@ from zope.dublincore.interfaces import IDCDescriptiveProperties
 from .interfaces import IConfigurator, IConfigurablePlugin, IPluginConfiguration
 
 
+@implementer(IConfigurator, IDCDescriptiveProperties)
 class Configurator(OOBTree):
-    grok.implements(IConfigurator, IDCDescriptiveProperties)
-
     title = u"Konfiguration"
 
 
+@implementer(IPluginConfiguration)
 class Configuration(PersistentDict, Location):
-    grok.implements(IPluginConfiguration)
+    pass
 
 
 def get_plugin_configuration(homefolder=None, request=None, name=None):

@@ -1,0 +1,62 @@
+Configurable plugin
+===================
+
+
+Base class
+----------
+
+  >>> import uvc.configpanel
+  >>> from zope.interface.verify import verifyObject
+
+  >>> base = uvc.configpanel.Plugin()
+  >>> assert verifyObject(uvc.configpanel.IConfigurablePlugin, base)
+
+  >>> base.getInterfaces()
+  []
+
+  >>> base.configuration_fields
+  <Fields>
+
+  >>> len(base.configuration_fields)
+  0
+
+  >>> conf = base()
+  >>> conf.__class__
+  <class 'uvc.configpanel.traversal.Configuration'>
+
+
+As an utility
+-------------
+
+  >>> from grokcore.component import name
+  >>> from zope.interface import Interface
+  >>> from zope.schema import Bool
+
+  >>> class IAllowable(Interface):
+  ...     allow = Bool(
+  ...         title=u"Allow it",
+  ...         required=True)
+
+  >>> class AllowPlugin(uvc.configpanel.Plugin):
+  ...     name('allow')
+  ...
+  ...     def getInterfaces(self):
+  ...         return [IAllowable]
+
+  >>> from grok.testing import grok_component
+  >>> grok_component('AllowPlugin', AllowPlugin)
+  True
+
+  >>> from zope.component import getUtility
+  >>> plugin = getUtility(uvc.configpanel.IConfigurablePlugin, 'allow')
+  >>> plugin
+  <AllowPlugin object at ...>
+
+  >>> plugin.configuration_fields
+  <Fields>
+
+  >>> for field in plugin.configuration_fields: print field
+  <BooleanField Allow it>
+
+  >>> config = plugin()
+  >>> assert IAllowable.providedBy(config)

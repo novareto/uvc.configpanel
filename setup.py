@@ -3,6 +3,12 @@ import os
 
 version = '0.3.dev0'
 
+
+tests_require = [
+    'zope.testrunner',
+]
+
+
 setup(name='uvc.configpanel',
       version=version,
       description="",
@@ -32,9 +38,11 @@ setup(name='uvc.configpanel',
           'zope.component',
           'zope.dublincore',
           'zope.interface',
-          'zope.location'
+          'zope.location',
           'zope.traversing',
+          'cromlech.browser',
       ],
+      extras_require={'test': tests_require},
       entry_points={
          'z3c.autoinclude.plugin': 'target=uvcsite', 
       }
