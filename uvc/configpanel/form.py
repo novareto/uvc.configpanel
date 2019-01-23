@@ -12,6 +12,7 @@ from .interfaces import IConfigurablePlugin, IPluginConfiguration
 class Configure(uvcsite.Form):
     grok.context(IPluginConfiguration)
     grok.name('index.html')
+    grok.require('uvc.ManageCoUsers')
     #uvcsite.require()
 
     ignoreContent = False
