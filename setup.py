@@ -40,7 +40,7 @@ setup(name='uvc.configpanel',
           'zope.interface',
           'zope.location',
           'zope.traversing',
-          'cromlech.browser',
+#          'cromlech.browser',
       ],
       extras_require={'test': tests_require},
       entry_points={
