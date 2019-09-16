@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import grok
-import uvcsite
+import uvcsite.browser
 from zeam.form.base import action, SUCCESS, FAILURE
 from zeam.form.base.datamanager import DictDataManager
 from zope.component import getUtility
@@ -9,11 +9,10 @@ from zope.cachedescriptors.property import CachedProperty
 from .interfaces import IConfigurablePlugin, IPluginConfiguration
 
 
-class Configure(uvcsite.Form):
+class Configure(uvcsite.browser.Form):
     grok.context(IPluginConfiguration)
     grok.name('index.html')
     grok.require('uvc.ManageCoUsers')
-    #uvcsite.require()
 
     ignoreContent = False
     ignoreRequest = False

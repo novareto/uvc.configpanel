@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import grok
-import uvcsite
+import uvcsite.browser
 from .traversal import Configurator
 from .vocabulary import configurable_plugins
 
@@ -9,7 +9,7 @@ from .vocabulary import configurable_plugins
 grok.templatedir('templates')
 
 
-class ConfiguratorIndex(uvcsite.Page):
+class ConfiguratorIndex(uvcsite.browser.Page):
     grok.name('index.html')
     grok.context(Configurator)
 
