@@ -11,8 +11,8 @@ class MyPrefsMenu(uvcsite.browser.layout.menu.MenuItem):
     grok.name('my_prefs_menu')
     grok.title(u'Erweiterte Einstellungen')
     grok.require('uvc.ManageCoUsers')
-    grok.adapts(Interface, Interface, Interface,
-                uvcsite.browser.layout.slots.interfaces.IPersonalMenu)
+    uvcsite.browser.layout.menu.menu(
+        uvcsite.browser.layout.slots.interfaces.IPersonalMenu)
 
     @property
     def action(self):
