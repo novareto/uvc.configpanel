@@ -20,7 +20,7 @@ class Configurator(OOBTree):
     title = u"Konfiguration"
 
 
-@implementer(IPluginConfiguration)
+@implementer(IPluginConfiguration, IContext)
 class Configuration(PersistentDict, Location):
     pass
 
