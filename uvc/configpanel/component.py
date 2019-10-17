@@ -13,6 +13,7 @@ class Plugin(grok.GlobalUtility):
  
     title = u"Base plugin"
     description = u"Base configurable plugin."
+    icon = "fas fa-plug"
 
     def __call__(self, *args, **kwargs):
         conf = Configuration(**kwargs)

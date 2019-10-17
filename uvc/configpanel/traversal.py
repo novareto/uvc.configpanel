@@ -8,13 +8,14 @@ from zope.interface import Interface, implementer
 from zope.component import getUtility
 from persistent.dict import PersistentDict
 from zope.location import Location, LocationProxy
+from grokcore.component.interfaces import IContext
 from zope.traversing.interfaces import ITraversable
 from zope.dublincore.interfaces import IDCDescriptiveProperties
 from .interfaces import (IConfigurator, IConfigurablePlugin,
     IPluginConfiguration)
 
 
-@implementer(IConfigurator, IDCDescriptiveProperties)
+@implementer(IConfigurator, IContext, IDCDescriptiveProperties)
 class Configurator(OOBTree):
     title = u"Konfiguration"
 

@@ -10,7 +10,7 @@ grok.templatedir('templates')
 
 
 class ConfiguratorIndex(uvcsite.browser.Page):
-    grok.name('index.html')
+    grok.name('index')
     grok.context(Configurator)
 
     def update(self):
