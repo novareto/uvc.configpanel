@@ -1,19 +1,23 @@
 # -*- coding: utf-8 -*-
 
 import grok
+
+
 import uvcsite.browser.layout.menu
+from uvcsite.interfaces import IHomeFolder
 import uvcsite.browser.layout.slots.interfaces
-from zope.publisher.interfaces.browser import IDefaultBrowserLayer
-from zope.interface import Interface
 
 
 class MyPrefsMenu(uvcsite.browser.layout.menu.MenuItem):
-    grok.name('my_prefs_menu')
-    grok.title(u'Erweiterte Einstellungen')
+    grok.name("my_prefs_menu")
+    grok.title(u"Erweiterte Einstellungen")
     grok.require('uvc.ManageCoUsers')
     uvcsite.browser.layout.menu.menu(
-        uvcsite.browser.layout.slots.interfaces.IPersonalMenu)
+        uvcsite.browser.layout.slots.interfaces.IPersonalMenu
+    )
 
-    @property
-    def action(self):
-        return uvcsite.getHomeFolderUrl(self.request, "++plugins++")
+    title = u"Erweiterte Einstellungen"
+    icon = "fas fa-wrench"
+
+    def url(self):
+        return self.view.url(IHomeFolder(self.request.principal), "++plugins++")

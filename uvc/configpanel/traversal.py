@@ -2,7 +2,6 @@
 
 import grok
 import uvcsite
-import datetime
 
 from BTrees.OOBTree import OOBTree
 from zope.interface import Interface, implementer
@@ -11,7 +10,8 @@ from persistent.dict import PersistentDict
 from zope.location import Location, LocationProxy
 from zope.traversing.interfaces import ITraversable
 from zope.dublincore.interfaces import IDCDescriptiveProperties
-from .interfaces import IConfigurator, IConfigurablePlugin, IPluginConfiguration
+from .interfaces import (IConfigurator, IConfigurablePlugin,
+    IPluginConfiguration)
 
 
 @implementer(IConfigurator, IDCDescriptiveProperties)
@@ -27,8 +27,8 @@ class Configuration(PersistentDict, Location):
 def get_plugin_configuration(homefolder=None, request=None, name=None):
     if homefolder is None:
         if request is None:
-            request = uvcsite.getRequest()
-        homefolder = uvcsite.getHomeFolder(request)
+            request = uvcsite.utils.shorties.getRequest()
+        homefolder = uvcsite.interfaces.IHomeFolder(request.principal)
     if '__config__' not in homefolder:
         homefolder['__config__'] = Configurator()
     configurator = homefolder['__config__']
