@@ -3,16 +3,17 @@
 import grok
 
 
-import uvcsite.browser.layout.menu
+from uvc.menus.components import MenuItem
+from uvc.menus.directives import menu 
 from uvcsite.interfaces import IHomeFolder
 import uvcsite.browser.layout.slots.interfaces
 
 
-class MyPrefsMenu(uvcsite.browser.layout.menu.MenuItem):
+class MyPrefsMenu(MenuItem):
     grok.name("my_prefs_menu")
     grok.title(u"Erweiterte Einstellungen")
     #grok.require('uvc.ManageCoUsers')
-    uvcsite.browser.layout.menu.menu(
+    menu(
         uvcsite.browser.layout.slots.interfaces.IPersonalMenu
     )
 
