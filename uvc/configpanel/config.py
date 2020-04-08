@@ -13,10 +13,7 @@ class MyPrefsMenu(MenuItem):
     grok.name("my_prefs_menu")
     grok.title(u"Erweiterte Einstellungen")
     grok.require('uvc.ManageCoUsers')
-    uvcsite.browser.layout.menu.menu(
-    menu(
-        uvcsite.browser.layout.slots.interfaces.IPersonalMenu
-    )
+    menu(uvcsite.browser.layout.slots.interfaces.IPersonalMenu)
 
     title = u"Erweiterte Einstellungen"
     icon = "fas fa-wrench"
