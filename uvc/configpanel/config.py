@@ -1,14 +1,22 @@
 # -*- coding: utf-8 -*-
 
 import grok
-import uvcsite
 
 
-class MyPrefsMenu(uvcsite.MenuItem):
-    grok.title(u'Erweiterte Einstellungen')
+from uvc.menus.components import MenuItem
+from uvc.menus.directives import menu 
+from uvcsite.interfaces import IHomeFolder
+import uvcsite.browser.layout.slots.interfaces
+
+
+class MyPrefsMenu(MenuItem):
+    grok.name("my_prefs_menu")
+    grok.title(u"Erweiterte Einstellungen")
     grok.require('uvc.ManageCoUsers')
-    grok.viewletmanager(uvcsite.IPersonalMenu)
+    menu(uvcsite.browser.layout.slots.interfaces.IPersonalMenu)
 
-    @property
-    def action(self):
-        return uvcsite.getHomeFolderUrl(self.request, "++plugins++")
+    title = u"Erweiterte Einstellungen"
+    icon = "fas fa-wrench"
+
+    def url(self):
+        return self.view.url(IHomeFolder(self.request.principal), "++plugins++")

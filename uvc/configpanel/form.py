@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
 
 import grok
-import uvcsite
-from zeam.form.base import action, SUCCESS, FAILURE
+import uvcsite.browser
+from zeam.form.base import action, SUCCESS, FAILURE, Fields
 from zeam.form.base.datamanager import DictDataManager
 from zope.component import getUtility
 from zope.cachedescriptors.property import CachedProperty
 from .interfaces import IConfigurablePlugin, IPluginConfiguration
 
 
-class Configure(uvcsite.Form):
+class Configure(uvcsite.browser.Form):
     grok.context(IPluginConfiguration)
-    grok.name('index.html')
-    grok.require('uvc.ManageCoUsers')
-    #uvcsite.require()
+    grok.name("index")
+    grok.require("uvc.ManageCoUsers")
 
     ignoreContent = False
     ignoreRequest = False
@@ -26,7 +25,7 @@ class Configure(uvcsite.Form):
     @CachedProperty
     def label(self):
         return self.factory.title
-    
+
     @CachedProperty
     def fields(self):
         return self.factory.configuration_fields
@@ -35,10 +34,10 @@ class Configure(uvcsite.Form):
     def save_configuration(self):
         data, errors = self.extractData()
         if errors:
-            self.flash('Es ist ein Fehler aufgetreten.')
+            self.flash("Es ist ein Fehler aufgetreten.")
             return FAILURE
 
         item = self.getContent()
         item.update(data)
-        self.flash('Ihre Einstellungen wurden gespeichert.')
+        self.flash("Ihre Einstellungen wurden gespeichert.")
         return SUCCESS

@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '0.5.dev0'
+version = '2.1.dev0'
 
 
 tests_require = [
@@ -40,7 +40,7 @@ setup(name='uvc.configpanel',
           'zope.interface',
           'zope.location',
           'zope.traversing',
-          'cromlech.browser',
+#          'cromlech.browser',
       ],
       extras_require={'test': tests_require},
       entry_points={

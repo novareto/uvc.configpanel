@@ -1,10 +1,10 @@
 <h1> Einstellungen </h1>
 <p> Hier haben Sie die Möglichkeit das Extranet auf Ihre Bedürfnisse hin anzupassen</p>
 
-<ul class="nav nav-pills nav-stacked">
-  <li tal:repeat="item view.plugins">
-    <a tal:attributes="href '%s/++plugins++%s' % (view.url(context), item.token)"
-       tal:content="item.value.title"
-       />
+<ul class="nav nav-pills flex-column">
+  <li class="nav-item" tal:repeat="item view.plugins">
+    <a class="nav-link" tal:attributes="href '%s/++plugins++%s' % (view.url(context), item.token)">
+      <i class="fas fa-plug"></i>
+      <span tal:content="item.value.title" />
   </li>
 </ul>
