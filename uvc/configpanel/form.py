@@ -34,10 +34,10 @@ class Configure(uvcsite.browser.Form):
     def save_configuration(self):
         data, errors = self.extractData()
         if errors:
-            self.flash("Es ist ein Fehler aufgetreten.")
+            self.flash("Es ist ein Fehler aufgetreten.", type="danger")
             return FAILURE
 
         item = self.getContent()
         item.update(data)
-        self.flash("Ihre Einstellungen wurden gespeichert.")
+        self.flash("Ihre Einstellungen wurden gespeichert.", type="success")
         return SUCCESS

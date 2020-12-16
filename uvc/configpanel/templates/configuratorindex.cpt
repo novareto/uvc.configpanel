@@ -6,5 +6,6 @@
     <a class="nav-link" tal:attributes="href '%s/++plugins++%s' % (view.url(context), item.token)">
       <i class="fas fa-plug"></i>
       <span tal:content="item.value.title" />
+    </a>
   </li>
 </ul>
